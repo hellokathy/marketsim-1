@@ -5,7 +5,8 @@ import re
 
 
 def parse_orders(filename):
-	parser = csv.reader(open(filename, 'rU'), delimiter = ",")
+	fileopen = open(filename,'rU')
+	parser = csv.reader(fileopen, delimiter = ",")
 	orders = {"year":[],"month":[],"date":[],"symbol":[],"buy_or_sell":[],
 			"quantity":[]}
 	for row in parser:
@@ -15,7 +16,9 @@ def parse_orders(filename):
 		orders["symbol"].append(row[3])
 		orders["buy_or_sell"].append(row[4])
 		orders["quantity"].append(row[5])
-	return orders
+	fileopen.close()
+	symbols = list(set(orders["symbol"]))
+	return orders,symbols
 if __name__ == "__main__":
 	if len(sys.argv) < 4:
 		print "Not sufficient arguments."
@@ -24,6 +27,6 @@ if __name__ == "__main__":
 		print "First argument must be an integer representing investable cash."
 	else:
 		startingcash = sys.argv[1]
-		orderbook = parse_orders(sys.argv[2])
+		orderbook,symbols = parse_orders(sys.argv[2])
 		outputfile = sys.argv[2]
 		print orderbook
