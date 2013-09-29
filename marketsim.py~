@@ -1,0 +1,19 @@
+import csv
+import QSTK
+import sys
+import re
+
+
+def parse_orders(filename):
+	parser = csv.reader(open(filename, 'rU'), delimiter = ",")
+	for row in parser:
+		print row
+
+if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        print "Not sufficient arguments."
+        print "Arguments should be,: [Starting Cash] [Order File] [Output File]"
+	else:
+		if re.match("$[0-9]*^",sys.argv[1]):
+			print "First argument must be an integer representing investable cash."
+			print "Arguments received: ",sys.argv[1],sys.argv[2],sys.argv[3]
