@@ -1,0 +1,5 @@
+9/28/13
+Writing the market simulator for the Computational Investing Part 1 with
+CourseEra. I fully intend on adding more stuff as I go on; I'd much rather
+use my own simulator than Quantopian's. Will go ahead and add an event
+profiler at the end when I'm good and ready.
