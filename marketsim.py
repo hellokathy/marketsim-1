@@ -79,6 +79,7 @@ if __name__ == "__main__":
         orderbook, symbols, begin, end = parse_orders(filename)
         timestamps = get_timestamps(begin, end, symbols)
         mydata = get_data(timestamps,symbols,ls_keys)
+        print mydata
     elif re.match("$[0-9]*^", sys.argv[1]):
         print "First argument must be an integer representing investable cash."
     else:
